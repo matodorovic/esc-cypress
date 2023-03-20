@@ -1,0 +1,122 @@
+.challenges {
+    margin: 3rem 0;
+
+    @include section;
+
+    h2 {
+        text-align: center;
+    }
+}
+
+.challenge-list {
+    display: flex;
+    overflow-x: scroll;
+    padding: 1.5em 1.5em;
+}
+
+@media (min-width: $bp-large) {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 400px);
+        justify-content: center;
+        padding: 2.5em 2em;
+        gap: 2em;
+
+        .challenge-item {
+            margin: 0;
+        }
+    }
+}
+
+@media (min-width: $bp-very-large) {
+    .grid {
+        overflow: visible;
+        grid-template-columns: repeat(4, 400px);
+    }
+}
+
+.challenge-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 360px;
+    position: relative;
+    border-radius: 4px;
+    margin: 1em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+    transition: box-shadow .3s;
+    overflow: hidden;
+    animation: card-reveal .3s;
+
+    &:hover {
+        box-shadow: 0 0 2em rgba(0, 0, 0, 0.6);
+    }
+
+    .challenge-title,
+    .challenge-description,
+    .rating,
+    .challenge-meta,
+    .button {
+        margin: 0.5rem;
+    }
+
+    .challenge-image {
+        grid-column: span 2;
+        width: 100%;
+    }
+
+    .challenge-image-icon {
+        position: absolute;
+        right: .5em;
+        top: .5em;
+        font-size: 40px;
+        color: $c-darkblue;
+    }
+
+    .challenge-title {
+        grid-column: span 2;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-top: 0.8em;
+        margin-bottom: 0;
+    }
+
+    .challenge-meta {
+        text-align: right;
+    }
+
+    .challenge-description {
+        grid-column: span 2;
+    }
+
+    .button {
+        grid-column: 2 / 3;
+        font-size: 0.7em;
+        padding: 1em;
+    }
+}
+
+@keyframes card-reveal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.challenges-cta {
+    @include responsive-ctas;
+    margin: 4rem 3rem;
+}
+
+.no-matching-challenges {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.hidden {
+    display: none;
+}
